@@ -19,7 +19,7 @@ public interface TheatreService {
 
 	/* void updateTheatre(Address address, String theatreName); */
 
-	/* Theatre deleteTheatre(Address address, String theatreName); */
+	void deleteTheatre(Address address, String theatreName);
 
 	/*
 	 * void deleteTheatre(Theatre theatre);

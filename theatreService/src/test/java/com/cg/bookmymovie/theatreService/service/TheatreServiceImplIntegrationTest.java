@@ -2,6 +2,7 @@
 package com.cg.bookmymovie.theatreService.service;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -58,47 +59,42 @@ public class TheatreServiceImplIntegrationTest {
 		assertEquals(2, theatreService.getAllTheatres().size());
 	}
 
-	
-	/*
-	 * @Test
-	 * 
-	 * @Ignore public void testGetTheatreByWrongName() { assertEquals(null,
-	 * theatreService.findTheatreByName("Mangala")); }
-	 */
+	@Test
+	public void testGetTheatreByWrongName() {
+		Address address2 = new Address("Rajasthan", "Kota", "Nayapura");
 
-	
-	  @Test
-	  public void testGetTheatreByRightName() {
-		  Address address2 = new Address("Rajasthan", "Kota", "Nayapura");
+		assertNotEquals(theatreService.getParticularTheatre(address2, "Inox"), theatre2.getTheatreName());
+	}
 
-	  assertEquals(theatreService.getParticularTheatre(address2, "HyperCinema").get().getTheatreName(),
-	  theatre2.getTheatreName()); }
-	 
-	
-	/*
-	 * @Test public void testDeleteTheatreByCorrectName() { Address address = new
-	 * Address("Maharashtra", "Mumbai", "Thane");
-	 * 
-	 * theatreService.deleteTheatre(address, "HyperCinema"); assertEquals(null,
-	 * theatreService.getParticularTheatre(address, "HyperCinema")); }
-	 */
-	 
-	/*
-	 * @Test
-	 * 
-	 * @Ignore public void testDeleteTheatreByWrongName() {
-	 * theatreService.deleteTheatre(theatre); assertEquals(null,
-	 * theatreService.findTheatreByName("mangala")); }
-	 */
+	@Test
+	public void testGetTheatreByRightName() {
+		Address address2 = new Address("Rajasthan", "Kota", "Nayapura");
 
-	/*
-	 * @Test
-	 * 
-	 * @Ignore public void addNewTheatres() {
-	 * theatreService.addNewTheatre(theatre2); System.out.println("Entering " +
-	 * theatreService.findTheatreByName("Kota").getTheatreAddress().getCity());
-	 * theatreService.findTheatreByName("HyperCinema").getTheatreName(); }
-	 */
+		assertEquals(theatreService.getParticularTheatre(address2, "HyperCinema").get().getTheatreName(),
+				theatre2.getTheatreName());
+	}
+
+	@Test
+	@Ignore
+	public void testDeleteTheatreByCorrectName() {
+		Address address = new Address("Maharashtra", "Mumbai", "Thane");
+		theatreService.deleteTheatre(address, "HyperCinema");
+		assertEquals(null, theatreService.getParticularTheatre(address, "HyperCinema"));
+	}
+
+	@Test
+	public void testDeleteTheatreByWrongName() {
+		Address address = new Address("Maharashtra", "Mumbai", "Thane");
+		theatreService.deleteTheatre(address, "Inox");
+		assertEquals(null, theatreService.getParticularTheatre(address, "HyperCinema"));
+	}
+
+	@Test
+	public void addNewTheatres() {
+		Address address = new Address("Maharashtra", "Mumbai", "Thane");
+		theatreService.addNewTheatre(theatre);
+		theatreService.getParticularTheatre(address, "HyperCinema");
+	}
 
 	/*
 	 * @Test

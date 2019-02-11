@@ -65,19 +65,19 @@ public class TheatreResource {
 	 * ResponseEntity<>(HttpStatus.OK); }
 	 */
 
-	/*
-	 * @DeleteMapping("/{theatreName}") public ResponseEntity<String>
-	 * deleteTheatre(@RequestParam String state, @RequestParam String city,
-	 * 
-	 * @RequestParam String street, @RequestParam String theatreName) {
-	 * 
-	 * Address address = new Address(); address.getState(); address.setCity(city);
-	 * address.setStreet(street); Optional<Theatre> theatre =
-	 * theatreService.getParticularTheatre(address, theatreName); if
-	 * (!theatre.isPresent()) { return new ResponseEntity<>(HttpStatus.NOT_FOUND); }
-	 * 
-	 * theatreService.deleteTheatre(address, theatreName); return new
-	 * ResponseEntity<>("Theatre Deleted SuccessFully", HttpStatus.OK); }
-	 */
+	
+	  @DeleteMapping("/{theatreName}") public ResponseEntity<String>
+	  deleteTheatre(@RequestParam String state, @RequestParam String city,
+	  
+	  @RequestParam String street, @RequestParam String theatreName) {
+	  
+	  Address address = new Address(); address.getState(); address.setCity(city);
+	  address.setStreet(street); Optional<Theatre> theatre =
+	  theatreService.getParticularTheatre(address, theatreName); if
+	  (!theatre.isPresent()) { return new ResponseEntity<>(HttpStatus.NOT_FOUND); }
+	  
+	  theatreService.deleteTheatre(address, theatreName); return new
+	  ResponseEntity<>("Theatre Deleted SuccessFully", HttpStatus.OK); }
+	 
 
 }

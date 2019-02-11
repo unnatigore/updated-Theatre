@@ -17,4 +17,6 @@ public interface TheatreRepository extends MongoRepository<Theatre, Integer> {
 
 	Optional<Theatre> findTheatreByTheatreAddressAndTheatreName(Address address, String theatreName);
 
+	void deleteTheatreByTheatreAddressAndTheatreName(Address address, String theatreName);
+
 }

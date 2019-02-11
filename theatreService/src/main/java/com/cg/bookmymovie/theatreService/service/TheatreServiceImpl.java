@@ -30,19 +30,18 @@ public class TheatreServiceImpl implements TheatreService {
 	public Optional<Theatre> getParticularTheatre(Address address, String theatreName) {
 		Optional<Theatre> theatre = theatreRepository.findTheatreByTheatreAddressAndTheatreName(address, theatreName);
 		if (!(theatre).isPresent()) {
-			return null; 
-			}
-		
+			return null;
+		}
+
 		return theatre;
 	}
 
-	/*
-	 * @Override public void deleteTheatre(Address address, String theatreName) {
-	 * Optional<Theatre> theatre =
-	 * theatreRepository.findTheatreByTheatreAddressAndTheatreName(address,
-	 * theatreName); theatreRepository.delete(theatre); }
-	 */
-	
+	@Override
+	public void deleteTheatre(Address address, String theatreName) {
+		Optional<Theatre> theatre = theatreRepository.findTheatreByTheatreAddressAndTheatreName(address, theatreName);
+		theatreRepository.deleteTheatreByTheatreAddressAndTheatreName(address, theatreName);
+	}
+
 	/*
 	 * @Override public void updateTheatre(Address address, String theatreName) {
 	 * Theatre theatre =
